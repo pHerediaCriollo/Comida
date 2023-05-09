@@ -1,0 +1,77 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="white">
+    <ion-title style="text-align: center;">MENU</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="background">
+  <br><br>
+  <div style="padding-left: 20%; padding-right: 20%; " >
+<ion-list class="list-formulario"  class="my-element" >
+  <ion-item>
+    <ion-input type="text" placeholder="Plato" [(ngModel)]="newPersona.plato"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" placeholder="Calorias del plato" [(ngModel)]="newPersona.caloria"></ion-input>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-input type="text" placeholder="Precio" [(ngModel)]="newPersona.precio"></ion-input>
+  </ion-item>
+  <ion-item>
+    <p>Valoracion del plato.
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </p>
+    <form>
+    <p class="valor">
+      <input id="radio1" type="radio" name="estrellas" value="★★★★★" [(ngModel)]="newPersona.calificacion"><!--
+      --><label for="radio1">★</label><!--
+      --><input id="radio2" type="radio" name="estrellas" value="★★★★" [(ngModel)]="newPersona.calificacion"><!--
+      --><label for="radio2">★</label><!--
+      --><input id="radio3" type="radio" name="estrellas" value="★★★" [(ngModel)]="newPersona.calificacion"><!--
+      --><label for="radio3">★</label><!--
+      --><input id="radio4" type="radio" name="estrellas" value="★★" [(ngModel)]="newPersona.calificacion"><!--
+      --><label for="radio4">★</label><!--
+      --><input id="radio5" type="radio" name="estrellas" value="★" [(ngModel)]="newPersona.calificacion"><!--
+      --><label for="radio5">★</label>
+    </p>
+    </form>
+  </ion-item>
+  <br>
+  <ion-item >
+    <ion-label>Imagen:</ion-label>
+    <ion-button color="dark" style="height: 40px; width: 40px;">
+      <label for="file-uploap">
+        <ion-icon slot="icon-only" name="images" style="height: 80px; width: 30px; color: white;"></ion-icon>
+      </label>
+      <input (change)="newImage($event)" id="file-uploap" style="display: none ;" type="file" accept="images/jpeg" [(ngModel)]="newPersona.imagen">
+    </ion-button>
+    <ion-input type="text"  [(ngModel)]="newPersona.imagen" label="Ingrese la URL" label-placement="floating" 
+      fill="solid" type="text" placeholder="Enter Text" ></ion-input>
+  </ion-item>
+  <ion-item style="text-align: center;">
+    <img [src]="newI" style="width: 100px; height: auto; ">
+  </ion-item>
+  </ion-list>
+<ion-list >
+  <ion-item *ngFor="let p of Personas" >
+    <ion-card style="background-color: black; width: 300px;">
+      <img alt="{{p.foto}}" src="{{p.foto}}" style="width: 100%; height: auto;">
+    <ion-label><h1 style="color: white;">&nbsp;{{p.nombre_P}}</h1></ion-label>
+    <ion-label style="color: white;">&nbsp;&nbsp;{{p.precio}} $</ion-label>
+    <ion-label style="color: white;">&nbsp;&nbsp;{{p.calorias}}</ion-label>
+    <ion-label style="color: white;">&nbsp;&nbsp;{{p.calificacion}}</ion-label>
+    <ion-label style="color: white;">&nbsp;&nbsp;{{p.foto}}</ion-label> 
+    <ion-button (click)="delete(p)" color="danger" >
+      <ion-icon slot="icon-only" name="close-circle-outline" ></ion-icon>
+    </ion-button>
+  </ion-card>
+  </ion-item>
+</ion-list>
+</div>
+<br><br><br>
+<ion-fab vertical="bottom" horizontal="end" >
+<ion-fab-button (click)="save()" size="small" color="success">
+  <ion-icon name="add-circle-outline"></ion-icon>
+</ion-fab-button>
+</ion-fab>
+</ion-content>
